@@ -28,3 +28,6 @@ runs:
       run: |
         VERSION=$(rye version | tr -d '\n')
         echo "version=${VERSION}" >> $GITHUB_OUTPUT
+
+    env:
+      BROKEN_VERSION: ${{steps.get-version.outputs.version}}
