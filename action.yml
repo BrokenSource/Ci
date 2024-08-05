@@ -18,5 +18,5 @@ runs:
       run: rye sync
 
     - name: Get version
-      run: echo BROKEN_VERSION=$(rye version | tr -d '\n') >> $GITHUB_ENV
+      run: echo BROKEN_VERSION=$(rye version) >> $GITHUB_ENV
       shell: bash
