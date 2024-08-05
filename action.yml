@@ -1,11 +1,6 @@
 name: Base Setup
 description: Sets up the environment for Broken projects
 
-outputs:
-  version:
-    description: Current version of the Projects
-    value: ${{steps.get-version.outputs.version}}
-
 runs:
   using: composite
   steps:
@@ -23,11 +18,5 @@ runs:
       run: rye sync
 
     - name: Get version
-      id: get-version
+      run: echo BROKEN_VERSION=$(rye version | tr -d '\n') >> $GITHUB_ENV
       shell: bash
-      run: |
-        VERSION=$(rye version | tr -d '\n')
-        echo "version=${VERSION}" >> $GITHUB_OUTPUT
-
-    env:
-      BROKEN_VERSION: ${{steps.get-version.outputs.version}}
