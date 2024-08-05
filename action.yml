@@ -1,0 +1,30 @@
+name: Base Setup
+description: Sets up the environment for Broken projects
+
+outputs:
+  version:
+    description: Current version of the Projects
+    value: ${{steps.get-version.outputs.version}}
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        repository: 'BrokenSource/BrokenSource'
+        submodules: recursive
+
+    - name: Install Rye
+      uses: eifinger/setup-rye@v4
+
+    - name: Sync dependencies
+      shell: bash
+      run: rye sync
+
+    - name: Get version
+      id: get-version
+      shell: bash
+      run: |
+        VERSION=$(rye version | tr -d '\n')
+        echo "version=${VERSION}" >> $GITHUB_OUTPUT
