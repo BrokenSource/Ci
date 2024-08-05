@@ -7,7 +7,7 @@ jobs:
     name: Build Wheels
     runs-on: ubuntu-latest
     steps:
-      - uses: BrokenSource/BrokenSource@main
+      - uses: BrokenSource/Ci@main
 
       - name: Build wheels
         run: rye run broken pypi
@@ -25,7 +25,7 @@ jobs:
   #     matrix:
   #       os: [ubuntu-latest, windows-latest, macos-14]
   #   steps:
-  #     - uses: BrokenSource/BrokenSource@main
+  #     - uses: BrokenSource/Ci@main
 
   #     - name: Build depthflow release
   #       run: rye run broken depthflow release --torch
@@ -53,7 +53,7 @@ jobs:
     name: Publish wheels to PyPI
     runs-on: ubuntu-latest
     steps:
-      - uses: BrokenSource/BrokenSource@main
+      - uses: BrokenSource/Ci@main
 
       - name: Download wheel artifacts
         uses: actions/download-artifact@v3
