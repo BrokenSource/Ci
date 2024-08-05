@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: BrokenSource/Ci@main
 
-      - run: echo Version is ${{$BROKEN_VERSION}}
+      - run: echo Version is "$BROKEN_VERSION"
         shell: bash
 
       - name: Build wheels
